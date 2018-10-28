@@ -1,0 +1,97 @@
+\documentclass[b5paper,fleqn]{ltjsarticle}
+\usepackage{braket,amsmath}
+\newcommand\s[1]{\subsection*{#1}\noindent\ignorespaces}
+\newcommand\al[1]{\begin{align*}#1\end{align*}}
+\newcommand\tx{\intertext}
+\newcommand\mat[2]{\left(\begin{array}{#1}#2\end{array}\right)}
+\begin{document}
+\begin{description}
+\item [タイトル] 量子計算理論
+\item [著者] 森前智行
+\item [出版日] 2017-11
+\item [ISBN13] 9784627854017
+\item [ページ数] 183
+\item [言語] ja
+\item [内容]従来のコンピュータのしくみと何がどう違うのか?なぜ速いのか?気鋭の若手研究者が基礎から最先端の話題までを幅広く解説.
+  \vskip5pt
+\item [版]1 
+\item [刷]2
+\end{description}
+
+\s{p6,古典計算機の場合はベクトルのL1ノルムが保存される---}
+\begin{itemize}
+  \item L1ノルム $x_1+x_2$
+  \item L2ノルム $x_1^2+x_2^2$
+\end{itemize}
+\s{p14,古典計算機の状態は$2^n$次元線形空間の---ということもできる。}
+ここはテンソル積を知らなければ理解できない。
+基底の数を次元と言い、$n$次元線型空間と$m$次元線型空間のテンソル積$V\otimes V$は$n\times m$
+次元線型空間となる。\par
+\underline{\bf 例}\par\noindent
+2次元線型空間$V$の基底を$e_1,e_2$とするとき$e_1\otimes e_1,e_1\otimes e_2,e_2\otimes e_1,
+e_2\otimes e_2$は$V\otimes V$の基底となる。ここではこれら基底を
+$\ket{00},\ket{01},\ket{10},\ket{11}$と書いている。
+2ビットの古典計算機の状態は$2^2$次元線型空間の正規直交基底である!
+\s{p15,演習問題}
+\[\mat{cc}{ 0&1\\ 1&0}
+    \mat{c}{1\\0}=\mat{c}{0\\1}\]
+\s{p16,演習問題}
+\[T\ket{a,b,c}=\ket{a,b,c\oplus ab}\]
+\al{T&:=(I\otimes I-\ket{11}\bra{11})\otimes I+\ket{11}\bra{11}\otimes X\\
+T\ket{a,b,c}&=(I\ket{a}\otimes I\ket{b}-\ket{11}\braket{11|a,b})
+\otimes I\ket{c}+\ket{11}\braket{11|a,b}\otimes X\ket{c}\\
+&=\ket{a,b,c}+\ket{11}\braket{11|a,b}\otimes(-\ket{c}+X\ket{c})
+}
+ここで$a,b$が11以外であれば後ろの項は落ちる。11であれば
+\[\ket{11,c}-\ket{11,c}+\ket{11,\lnot c}=\ket{11,\lnot c}\]
+より言える。
+\s{p19,演習問題}
+$\psi$を$w$を用いて$\sum_wc_w\ket{w}$と書いておき、
+$S\ket{\psi}$を計算する。
+\[S(\{p_{z',z}\}):=\sum_{z\in\{0,1\}^n}\sum_{z'\in\{0,1\}^n}p_{z',z}
+\ket{z'}\bra{z}\]
+であるから
+\al{S\ket{\psi}&=\sum_{z\in\{0,1\}^n}\sum_{z'\in\{0,1\}^n}
+\sum_{w\in\{0,1\}^n}p_{z',z}c_w\ket{z'}\braket{z|w}\\
+&=\sum_{z,z',w}p_{z',z}c_w\delta_{z,w}\ket{z'}\\
+&=\sum_{z,z'}p_{z',z}c_z\ket{z'}
+}
+ここで係数に注目すると、
+\[\sum_z\left(\sum_{z'}p_{z',z}c_z\right)
+=\sum_zc_z\left(\sum_{z'}p_{z',z}\right)
+=\sum_zc_z=1\]
+より言えた。
+
+\s{p25,演習問題}
+p19と同様にして
+\[S\ket{\psi}=\sum_z\left(\sum_{z'}p_{z',z}c_z\right)\]
+
+\s{p25,よりシンプルな式と等価であることが分かる。}
+ユニタリー行列とは$U^\dagger U=I$を満たすような行列である。
+ここで$\dagger$はエルミート転置を表す
+\footnote{物理ではエルミート転置に$\dagger$を用いるが、数学では$*$を用いることが多い。
+エルミート共軛、エルミート随伴、エルミート共役、あるいは随伴行列とも呼ばれる。}。
+行列$A$を$(i,j)$成分$a_{ij}$を用いて$(a_{ij})$と書くことがある。この記号を用いれば、
+$A^\dagger=(a^*_{ji})$である\footnote{物理では複素共役に$*$を用いるが、
+数学では$\overline{z}$のように上線で表すことが多い。}。したがって、
+\[U^\dagger U=\left(\sum_k u^*_{ki}u_{kj}\right)=\left(\delta_{ij}\right)=I\]
+である。演算子$U$の定義を用いて$U^\dagger U$を計算する。
+\al{
+  U^\dagger U&=\sum_{\alpha\in\{0,1\}^n}\sum_{\beta\in\{0,1\}^n}p^*_{\alpha,\beta}
+  \ket{\beta}\bra{\alpha}
+  \sum_{\alpha'\in\{0,1\}^n}\sum_{\beta'\in\{0,1\}^n}p_{\alpha',\beta'}
+  \ket{\alpha'}\bra{\beta'}\\
+  &=\sum_{\alpha,\beta,\alpha',\beta'}p^*_{\alpha,\beta}p_{\alpha',\beta'}
+  \delta_{\alpha,\alpha'}\ket{\beta}\bra{\beta'}\\
+  &=\sum_{\alpha,\beta,\beta'}p^*_{\alpha,\beta}p_{\alpha,\beta'}\ket{\beta}\bra{\beta'}
+  \tx{ここで式(3.1)を用いると、}
+  &=\sum_{\beta,\beta'}\delta_{\beta,\beta'}\ket{\beta}\bra{\beta'}\\
+  &=\sum_{\beta}\ket{\beta}\bra{\beta}=I
+}
+逆に$U^\dagger U=I$を仮定すると
+\[\sum_{\beta,\mu,\nu}p^*_{\beta,\mu}p_{\beta,\nu}\ket{\mu}\bra{\nu}=I\]
+を得るから、左から$\bra{\alpha}$を右から$\ket{\gamma}$を掛けることで、式$(3,1)$を
+導出することができる。
+
+
+\end{document}

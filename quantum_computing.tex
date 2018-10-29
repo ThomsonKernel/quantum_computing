@@ -63,8 +63,9 @@ $S\ket{\psi}$を計算する。
 より言えた。
 
 \s{p25,演習問題}
-p19と同様にして
-\[S\ket{\psi}=\sum_z\left(\sum_{z'}p_{z',z}c_z\right)\]
+p19の演習問題と同様にして
+\[U\ket{\psi}=\sum_\alpha \underline{c_\alpha\sum_\beta p_{\beta,\alpha}}\ket{\beta}\]
+を得る。求む。
 
 \s{p25,よりシンプルな式と等価であることが分かる。}
 ユニタリー行列とは$U^\dagger U=I$を満たすような行列である。
@@ -91,7 +92,12 @@ $A^\dagger=(a^*_{ji})$である\footnote{物理では複素共役に$*$を用い
 逆に$U^\dagger U=I$を仮定すると
 \[\sum_{\beta,\mu,\nu}p^*_{\beta,\mu}p_{\beta,\nu}\ket{\mu}\bra{\nu}=I\]
 を得るから、左から$\bra{\alpha}$を右から$\ket{\gamma}$を掛けることで、式$(3,1)$を
-導出することができる。
+導出することができる。\par
+ちなみに$\sum_{\beta}\ket{\beta}\bra{\beta}=I$であるが、1ビットの具体例を計算して見るとよく分かる。
+\[ \sum_{\beta\in\{0,1\}}\ket{\beta}\braket{\beta|\psi}=
+(\ket{0}\bra{0}+\ket{1}\bra{1})(c_0\ket{0}+c_1\ket{1})=c_0\ket{0}+c_1\ket{1}=\ket{\psi}\]
 
+\s{p27,演習問題}
+\[\ket{\psi}=\sum_{y\in\{0,1\}^{n-1}}c_{1y}\ket{1y}+\sum_{y\in\{0,1\}^{n-1}}c_{0y}\ket{0y}\]
 
 \end{document}

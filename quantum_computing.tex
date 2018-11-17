@@ -56,7 +56,7 @@ $S\ket{\psi}$を計算する。
 であるから
 \al{S\ket{\psi}&=\sum_{z\in\{0,1\}^n}\sum_{z'\in\{0,1\}^n}
 \sum_{w\in\{0,1\}^n}p_{z',z}c_w\ket{z'}\braket{z|w}\\
-&=\sum_{z,z',w}p_{z',z}c_w\delta_{z,w}\ket{z'}\\
+&=\sum_{z,z',w}p_{z',z}c_w\delta_{zw}\ket{z'}\\
 &=\sum_{z,z'}p_{z',z}c_z\ket{z'}
 }
 ここで係数に注目すると、
@@ -67,8 +67,16 @@ $S\ket{\psi}$を計算する。
 
 \s{p25,演習問題}
 p19の演習問題と同様にして
-\[U\ket{\psi}=\sum_\alpha \underline{c_\alpha\sum_\beta p_{\beta,\alpha}}\ket{\beta}\]
-を得る。求む。
+\[U\ket{\psi}=\sum_{z'}
+\underline{\sum_zp_{z',z}c_{z}}\ket{z'}\]
+を得る。下線部を新たに$c_{z'}$と看做して、
+$\sum_{z'}|c_{z'}|^2=1$を示せば良い。
+\al{
+  \sum_{z'}|c_{z'}|^2&=\sum_{z'}\sum_\alpha\sum_\beta
+  p_{z',\alpha}^*c_\alpha^*p_{z',\beta}c_\beta\\
+  &=\sum_{\alpha,\beta}\delta_{\alpha\beta}c^*_\alpha c_\beta\\
+  &=\sum_\alpha|c_\alpha|^2=1
+}
 
 \s{p25,よりシンプルな式と等価であることが分かる。}
 ユニタリー行列とは$U^\dagger U=I$を満たすような行列である。

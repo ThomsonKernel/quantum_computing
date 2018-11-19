@@ -1,5 +1,5 @@
 \documentclass[b5paper,fleqn]{ltjsarticle}
-\usepackage{braket,amsmath}
+\usepackage{braket,amsmath,luatex85,qcircuit}
 \newcommand\s[1]{\subsection*{#1}\noindent\ignorespaces}
 \newcommand\al[1]{\begin{align*}#1\end{align*}}
 \newcommand\tx{\intertext}
@@ -132,7 +132,9 @@ $A^\dagger=(a^*_{ji})$である\footnote{物理では複素共役に$*$を用い
 \[ZZ=\left(\ket{0}\bra{0}-\ket{1}\bra{1}\right)\left(\ket{0}\bra{0}-\ket{1}\bra{1}\right)
 =\ket{0}\bra{0}+\ket{1}\bra{1}=I\]
 \s{p35,演習問題,---固有値、固有ベクトルを求めよ。}
-
-
-
+\s{p35,演習問題,CCZゲートは、図4.2の回路と等価であることを確認せよ。}
+\Qcircuit{
+& \ctrl{1} & \targ     & \ctrl{1} & \qw \\
+& \targ    & \ctrl{-1} & \targ     & \qw
+}
 \end{document}

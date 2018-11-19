@@ -42,8 +42,12 @@ $\ket{00},\ket{01},\ket{10},\ket{11}$と書いている。
 \s{p15,演習問題,チューリングマシンが1+1を計算する様子を---}
 motomu
 \s{p15,演習問題,$X\ket{0}=\ket{1},X\ket{1}=\ket{0}$となることを---}
+成分を用いて計算すると
 \[\mat{cc}{ 0&1\\ 1&0}
     \mat{c}{1\\0}=\mat{c}{0\\1}\]
+あるいは以下の表式から明らかである。
+\[X=\ket{1}\bra{0}+\ket{0}\bra{1}\]
+
 \s{p16,演習問題,任意の$a,b,c\in\{0,1\}$に対し、---}
 \[T\ket{a,b,c}=\ket{a,b,c\oplus ab}\]
 \al{T&:=(I\otimes I-\ket{11}\bra{11})\otimes I+\ket{11}\bra{11}\otimes X\\
@@ -54,6 +58,8 @@ T\ket{a,b,c}&=(I\ket{a}\otimes I\ket{b}-\ket{11}\braket{11|a,b})
 ここで$a,b$が11以外であれば後ろの項は落ちる。11であれば
 \[\ket{11,c}-\ket{11,c}+\ket{11,\lnot c}=\ket{11,\lnot c}\]
 より言える。
+\s{p19,演習問題,上記の演算子を$\ket{00},\ket{01},\ket{10},\ket{11}$に作用させて---}
+motomu
 \s{p19,演習問題,---を表す3\times 3の確率行列を書け.}
 motomu
 \s{p19,演習問題,---も,この条件を必ず満たすことを示せ.}
@@ -72,8 +78,7 @@ $S\ket{\psi}$を計算する。
 =\sum_zc_z\left(\sum_{z'}p_{z',z}\right)
 =\sum_zc_z=1\]
 より言えた。
-
-\s{p25,演習問題}
+\s{p25,演習問題,$\{p_{z',z}\}_{z,z'\in\{0,1\}^n}$が式(3,1)を満たすなら---}
 p19の演習問題と同様にして
 \[U\ket{\psi}=\sum_{z'}
 \underline{\sum_zp_{z',z}c_{z}}\ket{z'}\]
@@ -116,7 +121,18 @@ $A^\dagger=(a^*_{ji})$である\footnote{物理では複素共役に$*$を用い
 \[ \sum_{\beta\in\{0,1\}}\ket{\beta}\braket{\beta|\psi}=
 (\ket{0}\bra{0}+\ket{1}\bra{1})(c_0\ket{0}+c_1\ket{1})=c_0\ket{0}+c_1\ket{1}=\ket{\psi}\]
 
-\s{p27,演習問題}
+\s{p27,演習問題,以下が成り立つことを確認せよ.}
 \[\ket{\psi}=\sum_{y\in\{0,1\}^{n-1}}c_{1y}\ket{1y}+\sum_{y\in\{0,1\}^{n-1}}c_{0y}\ket{0y}\]
+
+\s{p35,演習問題,パウリ演算子は以下の性質を満たすことを---}
+\[XX=\left(\ket{1}\bra{0}+\ket{0}\bra{1}\right)\left(\ket{1}\bra{0}+\ket{0}\bra{1}\right)
+=\ket{0}\bra{0}+\ket{1}\bra{1}=I\]
+\[YY=\left(i\ket{1}\bra{0}-i\ket{0}\bra{1}\right)\left(i\ket{1}\bra{0}-i\ket{0}\bra{1}\right)
+=\ket{0}\bra{0}+\ket{1}\bra{1}=I\]
+\[ZZ=\left(\ket{0}\bra{0}-\ket{1}\bra{1}\right)\left(\ket{0}\bra{0}-\ket{1}\bra{1}\right)
+=\ket{0}\bra{0}+\ket{1}\bra{1}=I\]
+\s{p35,演習問題,---固有値、固有ベクトルを求めよ。}
+
+
 
 \end{document}

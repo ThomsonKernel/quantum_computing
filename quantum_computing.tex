@@ -137,14 +137,48 @@ $A^\dagger=(a^*_{ji})$である\footnote{物理では複素共役に$*$を用い
 =\ket{0}\bra{0}+\ket{1}\bra{1}=I\]
 \[ZZ=\left(\ket{0}\bra{0}-\ket{1}\bra{1}\right)\left(\ket{0}\bra{0}-\ket{1}\bra{1}\right)
 =\ket{0}\bra{0}+\ket{1}\bra{1}=I\]
-\s{p35,演習問題,---固有値、固有ベクトルを求めよ.}
-\s{p35,演習問題,また図4,1(f)のように---$\ket{\phi}\otimes\ket{\psi}$になっていることを示せ.}
+\s{p35,演習問題,またパウリ演算子の固有値、固有ベクトルを求めよ.}
+motomu
+\s{p35,演習問題,さらに, n量子ビットパウリ演算子は掛け算について ---}
+motomu
+\s{p36, CCZゲート --- がよく使われる。}
+$I^{\otimes2}$を明示的に書くと、
+\al{
+  I^{\otimes2}
+&=(\ket{0}\bra{0}+\ket{1}\bra{1})\otimes(\ket{0}\bra{0}+\ket{1}\bra{1})\\
+&=\ket{00}\bra{00}+\ket{10}\bra{10}+\ket{01}\bra{01}+\ket{11}\bra{11}
+}である。これをCCZの定義に代入すると、
+\al{
+CCZ:&=(I^{\otimes 2}-\ket{11}\bra{11})\otimes I+\ket{11}\bra{11}\otimes Z\\
+&=(\ket{00}\bra{00}+\ket{10}\bra{10}+\ket{01}\bra{01})\otimes I+\ket{11}\bra{11}\otimes Z
+}を得る。この式を眺めると、CCZの意味がはっきりと分かる。\par
+また、$\Lambda(U)$に関しても同様の形に書き換えておこう。
+\al{\Lambda(U)
+&=\ket{0}\bra{0}\otimes I+\ket{1}\bra{1}\otimes U\\
+&=(I-\ket{1}\bra{1})\otimes I+\ket{1}\bra{1}\otimes U
+}
+以上の議論からより高次の一般形についても容易に導出できる。
+\[CCZ=\ket{0}\bra{0}\otimes I^{\otimes 2}+\ket{1}\bra{1}\otimes CZ\]
+なお$CCZ$はこのようにかけることも注意しておく。
+
+\s{p37,演習問題,CZゲートは、コントロールとターゲットを入れ替えても ---}
+それぞれ計算する。
+\al{
+\ket{0}\bra{0}\otimes I+\ket{1}\bra{1}\otimes Z
+&=\ket{0}\bra{0}\otimes(\ket{0}\bra{0}+\ket{1}\bra{1})+\ket{1}\bra{1}\otimes (\ket{0}\bra{0}-\ket{1}\bra{1})\\
+&=\ket{00}\bra{00}+\ket{01}\bra{01}+\ket{10}\bra{10}-\ket{11}\bra{11}
+}
+\al{
+I\otimes\ket{0}\bra{0}+Z\otimes\ket{1}\bra{1}
+&=(\ket{0}\bra{0}+\ket{1}\bra{1})\otimes\ket{0}\bra{0}+(\ket{0}\bra{0}-\ket{1}\bra{1})\otimes\ket{1}\bra{1}\\
+&=\ket{00}\bra{00}+\ket{10}\bra{10}+\ket{01}\bra{01}-\ket{11}\bra{11}
+}
+\s{p37,演習問題,また図4,1(f)のようにCXゲートを --- になっていることを示せ.}
 swap gate
-\Qcircuit{
-& \ctrl{1} & \targ     & \ctrl{1} & \qw \\
+\Qcircuit{ & \ctrl{1} & \targ     & \ctrl{1} & \qw \\
 & \targ    & \ctrl{-1} & \targ     & \qw
 }
-\s{p35,演習問題,CCZゲートは、図4.2の回路と等価であることを確認せよ。}
+\s{p37,演習問題,CCZゲートは、図4.2の回路と等価であることを確認せよ。}
 
 
 \section*{等価ゲート集}

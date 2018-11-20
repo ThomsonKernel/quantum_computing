@@ -20,6 +20,12 @@
 \item [版]1 
 \item [刷]2
 \end{description}
+{\bf 注意点:}\vskip5pt
+本書のp14で与えられるテンソル積のルール以外に、次の式を仮定する。
+\[(\ket{a}\bra{b})\otimes(\ket{c}\bra{d})=\ket{ac}\bra{bd}\]
+さらに一般に(積が上手く定義できる時)
+\[AB\otimes CD=(A\otimes B)\cdot(C\otimes D)\]
+が言える。ここで$\cdot$は行列としての積を意味する。
 
 \s{p6,古典計算機の場合はベクトルのL1ノルムが保存される---}
 \begin{itemize}
@@ -131,10 +137,29 @@ $A^\dagger=(a^*_{ji})$である\footnote{物理では複素共役に$*$を用い
 =\ket{0}\bra{0}+\ket{1}\bra{1}=I\]
 \[ZZ=\left(\ket{0}\bra{0}-\ket{1}\bra{1}\right)\left(\ket{0}\bra{0}-\ket{1}\bra{1}\right)
 =\ket{0}\bra{0}+\ket{1}\bra{1}=I\]
-\s{p35,演習問題,---固有値、固有ベクトルを求めよ。}
-\s{p35,演習問題,CCZゲートは、図4.2の回路と等価であることを確認せよ。}
+\s{p35,演習問題,---固有値、固有ベクトルを求めよ.}
+\s{p35,演習問題,また図4,1(f)のように---$\ket{\phi}\otimes\ket{\psi}$になっていることを示せ.}
+swap gate
 \Qcircuit{
 & \ctrl{1} & \targ     & \ctrl{1} & \qw \\
 & \targ    & \ctrl{-1} & \targ     & \qw
 }
+\s{p35,演習問題,CCZゲートは、図4.2の回路と等価であることを確認せよ。}
+
+
+\section*{等価ゲート集}
+\subsection{toffoli}
+\begin{minipage}{30pt}
+\Qcircuit{
+& \ctrl{1}    & \qw \\
+& \ctrl{1}    & \qw \\
+& \targ & \qw
+}
+\end{minipage}\quad=\quad
+\begin{minipage}{30pt}
+\Qcircuit{
+  &  \qw& \ctrl{1}    & \qw &\qw\\
+  &  \qw& \ctrl{1}    & \qw &\qw\\
+  &  \gate{H}& \ctrl{0} & \gate{H}&\qw }
+\end{minipage}
 \end{document}

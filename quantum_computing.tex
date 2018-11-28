@@ -1,9 +1,12 @@
 \documentclass[b5paper,fleqn]{ltjsarticle}
-\usepackage{braket,amsmath,luatex85,qcircuit}
+\usepackage{braket,luatex85,qcircuit,caption,here}
+\usepackage[fleqn]{amsmath}
+\captionsetup{labelformat=empty}
 \newcommand\s[1]{\subsection*{#1}\noindent\ignorespaces}
 \newcommand\al[1]{\begin{align*}#1\end{align*}}
 \newcommand\tx{\intertext}
 \newcommand\mat[2]{\left(\begin{array}{#1}#2\end{array}\right)}
+\newcommand\qcirc[2]{\begin{figure}[H]\centerline{\Qcircuit{#1}}\caption{#2}\end{figure}}
 \begin{document}
 \begin{description}
 \item [タイトル] 量子計算理論
@@ -141,7 +144,13 @@ $A^\dagger=(a^*_{ji})$である\footnote{物理では複素共役に$*$を用い
 motomu
 \s{p35,演習問題,さらに, n量子ビットパウリ演算子は掛け算について ---}
 motomu
-\s{p36, CCZゲート --- がよく使われる。}
+\s{p36,$R_{2/\pi}=Z^{1/2}$}
+$\mat{cc}{1&0\\0&i}$を2乗すると$Z$になる。
+\s{p36,一般に --- コントロールUゲート(controlled-U gate)と呼ばれる.}
+容易に示せるように
+\[\Lambda(A)\Lambda(B)=\Lambda(AB)\]
+である。
+\s{p36,CCZゲート --- がよく使われる.}
 $I^{\otimes2}$を明示的に書くと、
 \al{
   I^{\otimes2}
@@ -165,7 +174,8 @@ CCZ:&=(I^{\otimes 2}-\ket{11}\bra{11})\otimes I+\ket{11}\bra{11}\otimes Z\\
 それぞれ計算する。
 \al{
 \ket{0}\bra{0}\otimes I+\ket{1}\bra{1}\otimes Z
-&=\ket{0}\bra{0}\otimes(\ket{0}\bra{0}+\ket{1}\bra{1})+\ket{1}\bra{1}\otimes (\ket{0}\bra{0}-\ket{1}\bra{1})\\
+&=\ket{0}\bra{0}\otimes(\ket{0}\bra{0}+\ket{1}\bra{1})+\ket{1}\bra{1}\otimes
+(\ket{0}\bra{0}-\ket{1}\bra{1})\\
 &=\ket{00}\bra{00}+\ket{01}\bra{01}+\ket{10}\bra{10}-\ket{11}\bra{11}
 }
 \al{
@@ -173,16 +183,38 @@ I\otimes\ket{0}\bra{0}+Z\otimes\ket{1}\bra{1}
 &=(\ket{0}\bra{0}+\ket{1}\bra{1})\otimes\ket{0}\bra{0}+(\ket{0}\bra{0}-\ket{1}\bra{1})\otimes\ket{1}\bra{1}\\
 &=\ket{00}\bra{00}+\ket{10}\bra{10}+\ket{01}\bra{01}-\ket{11}\bra{11}
 }
-\s{p37,演習問題,また図4,1(f)のようにCXゲートを --- になっていることを示せ.}
-swap gate
-\Qcircuit{ & \ctrl{1} & \targ     & \ctrl{1} & \qw \\
+\s{p37,演習問題,また図4,1(f)のようにCXゲートをコントロールと ---}
+\qcirc{
+& \ctrl{1} & \targ     & \ctrl{1} & \qw \\
 & \targ    & \ctrl{-1} & \targ     & \qw
+}{SWAP Gate}
+p16で導入した記号$\oplus$(exclusive or)を用いると
+\al{CX\ket{\psi\phi}&=(\ket{0}\bra{0}\otimes I+\ket{1}\bra{1}\otimes X)\ket{\psi\phi}\\
+&=\delta_{0\psi}\ket{0\phi}+\delta_{1\psi}\ket{1\lnot\phi}\\
+&=\ket{\psi,\psi\oplus\phi}
 }
+が分かる。同様にコントロールとターゲットを入れ替えたものを$CX'$とすると、
+\[CX'\ket{\psi\phi}=\ket{\psi\oplus\phi,\phi}\]が言える。これらから、
+\[CX'CX\ket{\psi\phi}=\ket{\psi\oplus(\psi\oplus\phi),\psi\oplus\phi}=\ket{\phi,\psi\oplus\phi}\]
+ここで$\oplus$を2回取ると元に戻ることを使った。同様にすれば
+\[CXCX'CX\ket{\psi\phi}=\ket{\phi\psi}\]
+
 \s{p37,演習問題,CCZゲートは、図4.2の回路と等価であることを確認せよ。}
+\qcirc{
+&\qw              &\ctrl{1}&\qw                      &\ctrl{1} &\ctrl{2}        &\qw\\
+&\ctrl{1}         &\targ   &\ctrl{1}                 &\targ    &\qw             &\qw\\
+&\gate{R_{\pi/2}} &\qw     &\gate{R^\dagger_{\pi/2}} &\qw      &\gate{R_{\pi/2}}&\qw
+}{CCZ equivalent}
+最後のゲートを除いて先に計算する。\\
+公式集において$A=R_{\pi/2},B=X,C=R^\dagger_{\pi/2},D=X$とすると、
+\al{
+chotto matte kudasai
+}
+$(\ket{0}\bra{0}\otimes I\otimes I+\ket{1}\bra{1}\otimes I\otimes R_{\pi/2})$
 
 
-\section*{等価ゲート集}
-\subsection{toffoli}
+\newpage\section*{等価ゲート集}
+\subsection{Toffoli}
 \begin{minipage}{30pt}
 \Qcircuit{
 & \ctrl{1}    & \qw \\
@@ -196,4 +228,23 @@ swap gate
   &  \qw& \ctrl{1}    & \qw &\qw\\
   &  \gate{H}& \ctrl{0} & \gate{H}&\qw }
 \end{minipage}
+\subsection{CCZ equivalent}
+\Qcircuit{
+&\qw              &\ctrl{1}&\qw                      &\ctrl{1} &\ctrl{2}        &\qw\\
+&\ctrl{1}         &\targ   &\ctrl{1}                 &\targ    &\qw             &\qw\\
+&\gate{R_{\pi/2}} &\qw     &\gate{R^\dagger_{\pi/2}} &\qw      &\gate{R_{\pi/2}}&\qw
+}
+\newpage\section*{公式集}
+\subsection{$(I\otimes\Lambda(A))(\Lambda(B)\otimes I)$}
+\noindent\ignorespaces
+\al{&\ket{0}\bra{0}\otimes\ket{0}\bra{0}\otimes I+\ket{1}\bra{1}\otimes\ket{0}\bra{0}B\otimes I\\
+&\quad+\ket{0}\bra{0}\otimes\ket{1}\bra{1}\otimes A+\ket{1}\bra{1}\otimes\ket{1}\bra{1}B\otimes A
+}
+\subsection{$(I\otimes\Lambda(A))(\Lambda(B)\otimes I)(I\otimes\Lambda(C))(\Lambda(D)\otimes I)$}
+\noindent\ignorespaces
+\al{&\ket{0}\bra{0}\otimes\ket{0}\bra{0}\otimes I+\ket{1}\bra{1}\otimes\ket{0}\braket{0|B|0}\bra{0}D\otimes I\\
+&\quad+\ket{1}\bra{1}\otimes\ket{0}\braket{0|B|1}\bra{1}D\otimes C+\ket{0}\bra{0}\otimes\ket{1}\bra{1}\otimes AC\\
+&\qquad+\ket{1}\bra{1}\otimes\ket{1}\braket{1|B|0}\bra{0}D\otimes A
++\ket{1}\bra{1}\otimes\ket{1}\braket{1|B|1}\bra{1}D\otimes AC\\
+}
 \end{document}

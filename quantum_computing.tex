@@ -228,12 +228,21 @@ $(\ket{0}\bra{0}\otimes I\otimes I+\ket{1}\bra{1}\otimes I\otimes R_{\pi/2})$
   &  \qw& \ctrl{1}    & \qw &\qw\\
   &  \gate{H}& \ctrl{0} & \gate{H}&\qw }
 \end{minipage}
-\subsection{CCZ equivalent}
+\subsection{CCZ}
+\begin{minipage}{30pt}
+\Qcircuit{
+& \ctrl{1}    & \qw \\
+& \ctrl{1}    & \qw \\
+&\ctrl{0} & \qw
+}
+\end{minipage}\quad=\quad
+\begin{minipage}{30pt}
 \Qcircuit{
 &\qw              &\ctrl{1}&\qw                      &\ctrl{1} &\ctrl{2}        &\qw\\
 &\ctrl{1}         &\targ   &\ctrl{1}                 &\targ    &\qw             &\qw\\
 &\gate{R_{\pi/2}} &\qw     &\gate{R^\dagger_{\pi/2}} &\qw      &\gate{R_{\pi/2}}&\qw
 }
+\end{minipage}
 \newpage\section*{公式集}
 \subsection{$(I\otimes\Lambda(A))(\Lambda(B)\otimes I)$}
 \noindent\ignorespaces

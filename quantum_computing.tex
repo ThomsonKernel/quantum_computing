@@ -144,6 +144,14 @@ $A^\dagger=(a^*_{ji})$である\footnote{物理では複素共役に$*$を用い
 motomu
 \s{p35,演習問題,さらに, n量子ビットパウリ演算子は掛け算について ---}
 motomu
+\s{p35,量子ゲートには, パウリゲートのほかに, アダマール(Hadamard)ゲートや---}
+p28で導入された記号
+\[\ket{+}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})\]
+\[\ket{-}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})\]
+を用いれば
+\[H\equiv \ket{+}\bra{0}+\ket{-}\bra{1}\]
+と書くことができる。
+
 \s{p36,$R_{2/\pi}=Z^{1/2}$}
 $\mat{cc}{1&0\\0&i}$を2乗すると$Z$になる。
 \s{p36,一般に --- コントロールUゲート(controlled-U gate)と呼ばれる.}
@@ -206,12 +214,17 @@ p16で導入した記号$\oplus$(exclusive or)を用いると
 &\gate{R_{\pi/2}} &\qw     &\gate{R^\dagger_{\pi/2}} &\qw      &\gate{R_{\pi/2}}&\qw
 }{CCZ equivalent}
 最後のゲートを除いて先に計算する。\\
-公式集において$A=R_{\pi/2},B=X,C=R^\dagger_{\pi/2},D=X$とすると、
+巻末に示した公式集において$A=R_{\pi/2},B=X,C=R^\dagger_{\pi/2},D=X$とすると、
 \al{
-chotto matte kudasai
+&\ket{0}\bra{0}\otimes\ket{0}\bra{0}\otimes I+\ket{1}\bra{1}\otimes\ket{0}\bra{0}D\otimes R_{2/\pi}^\dagger\\
+&\quad+\ket{0}\bra{0}\otimes\ket{1}\bra{1}\otimes I+\ket{1}\bra{1}\otimes\ket{1}\bra{1}\otimes R_{2/\pi}
 }
-$(\ket{0}\bra{0}\otimes I\otimes I+\ket{1}\bra{1}\otimes I\otimes R_{\pi/2})$
+を得る。これに最後のゲート
+\[\ket{0}\bra{0}\otimes I\otimes I+\ket{1}\bra{1}\otimes I\otimes R_{2/\pi}\]
+を掛ければ言える。
 
+\s{p38,演習問題,図4.3の回路において, 一番上の量子ビットを---}
+\[\frac{2+\braket{\phi|U\phi}+\braket{\phi|U^\dagger|\phi}}{4}\]
 
 \newpage\section*{等価ゲート集}
 \subsection{Toffoli}
@@ -243,7 +256,7 @@ $(\ket{0}\bra{0}\otimes I\otimes I+\ket{1}\bra{1}\otimes I\otimes R_{\pi/2})$
 &\gate{R_{\pi/2}} &\qw     &\gate{R^\dagger_{\pi/2}} &\qw      &\gate{R_{\pi/2}}&\qw
 }
 \end{minipage}
-\newpage\section*{公式集}
+\newpage\section*{公式集}\label{formula}
 \subsection{$(I\otimes\Lambda(A))(\Lambda(B)\otimes I)$}
 \noindent\ignorespaces
 \al{&\ket{0}\bra{0}\otimes\ket{0}\bra{0}\otimes I+\ket{1}\bra{1}\otimes\ket{0}\bra{0}B\otimes I\\

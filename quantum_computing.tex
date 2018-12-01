@@ -197,15 +197,16 @@ I\otimes\ket{0}\bra{0}+Z\otimes\ket{1}\bra{1}
 & \targ    & \ctrl{-1} & \targ     & \qw
 }{SWAP Gate}
 p16で導入した記号$\oplus$(exclusive or)を用いると
-\al{CX\ket{\psi\phi}&=(\ket{0}\bra{0}\otimes I+\ket{1}\bra{1}\otimes X)\ket{\psi\phi}\\
-&=\delta_{0\psi}\ket{0\phi}+\delta_{1\psi}\ket{1\lnot\phi}\\
-&=\ket{\psi,\psi\oplus\phi}
+\al{CX\ket{\psi\phi}&=(\ket{0}\bra{0}\otimes I+\ket{1}\bra{1}\otimes X)\ket{a,b}\\
+&=\delta_{0a}\ket{0b}+\delta_{1a}\ket{1\lnot b}\\
+&=\ket{a,a\oplus b}
 }
 が分かる。同様にコントロールとターゲットを入れ替えたものを$CX'$とすると、
-\[CX'\ket{\psi\phi}=\ket{\psi\oplus\phi,\phi}\]が言える。これらから、
-\[CX'CX\ket{\psi\phi}=\ket{\psi\oplus(\psi\oplus\phi),\psi\oplus\phi}=\ket{\phi,\psi\oplus\phi}\]
+\[CX'\ket{a,b}=\ket{a\oplus b,b}\]が言える。これらから、
+\[CX'CX\ket{a,b}=\ket{a\oplus(a\oplus b),a\oplus b}=\ket{b,a\oplus b}\]
 ここで$\oplus$を2回取ると元に戻ることを使った。同様にすれば
-\[CXCX'CX\ket{\psi\phi}=\ket{\phi\psi}\]
+\[CXCX'CX\ket{a,b}=\ket{b,a}\]
+後は線型結合$\ket{\psi}=c_0\ket{0}+c_1\ket{1}$などを考えれば言える。
 
 \s{p37,演習問題,CCZゲートは、図4.2の回路と等価であることを確認せよ。}
 \qcirc{

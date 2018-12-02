@@ -1,12 +1,12 @@
 \documentclass[b5paper,fleqn]{ltjsarticle}
-\usepackage{braket,luatex85,qcircuit,caption,here}
+\usepackage{braket,luatex85,qcircuit,here,tikz}
 \usepackage[fleqn]{amsmath}
-\captionsetup{labelformat=empty}
 \newcommand\s[1]{\subsection*{#1}\noindent\ignorespaces}
 \newcommand\al[1]{\begin{align*}#1\end{align*}}
 \newcommand\tx{\intertext}
 \newcommand\mat[2]{\left(\begin{array}{#1}#2\end{array}\right)}
 \newcommand\qcirc[2]{\begin{figure}[H]\centerline{\Qcircuit{#1}}\caption{#2}\end{figure}}
+\newcommand\ex{\mathrm{e}}
 \begin{document}
 \begin{description}
 \item [タイトル] 量子計算理論
@@ -23,13 +23,27 @@
 \item [版]1 
 \item [刷]2
 \end{description}
-{\bf 注意点:}\vskip5pt
+
+\section{Tensor product}
 本書のp14で与えられるテンソル積のルール以外に、次の式を仮定する。
 \[(\ket{a}\bra{b})\otimes(\ket{c}\bra{d})=\ket{ac}\bra{bd}\]
 さらに一般に(積が上手く定義できる時)
 \[AB\otimes CD=(A\otimes B)\cdot(C\otimes D)\]
 が言える。ここで$\cdot$は行列としての積を意味する。
+\section{Bloch Sphere}
+\input{bloch}\par
+1bitの状態を考える。
+\[\ket{\psi}=\alpha\ket{0}+\beta\ket{1}\]
+とした時、$\alpha$と$\beta$は$|\alpha|^2+|\beta|^2=1$を満たす任意の複素数なので、
+$\alpha=a\ex^{i\kappa},\ \beta=b\ex^{i\mu}\quad(a\geq0, b\geq0)$とすると、$a^2+b^2=1$より、
+$a=\cos\frac{\theta}{2},\ b=\sin\frac{\theta}{2}\quad(0\leq\theta\leq\pi)$と書ける。
+\[\ket{\psi}=\ex^{i\kappa}\cos\frac{\theta}{2}\ket{0}+\ex^{i\mu}\sin\frac{\theta}{2}\ket{1}\]
+ここでフェーズだけが違う状態ベクトルは同一状態と見做すことを用いれば、$\ex^{-i\kappa}$を全体に掛けることができて、
+$\ex^{i(\mu-\kappa)}$を$\ex^{i\varphi}$とおけば、$\ket{\psi}$として以下のようなものを考えても一般性を失わない。
+\[\ket{\psi}=\cos\frac{\theta}{2}\ket{0}+\ex^{i\varphi}\sin\frac{\theta}{2}\ket{1}\quad 
+(0\leq\theta\leq\pi,\ 0\leq\varphi\leq2\pi)\]
 
+\section{Questions}
 \s{p6,古典計算機の場合はベクトルのL1ノルムが保存される---}
 \begin{itemize}
   \item L1ノルム $x_1+x_2$
@@ -227,7 +241,7 @@ p16で導入した記号$\oplus$(exclusive or)を用いると
 \s{p38,演習問題,図4.3の回路において, 一番上の量子ビットを---}
 \[\frac{2+\braket{\phi|U\phi}+\braket{\phi|U^\dagger|\phi}}{4}\]
 
-\newpage\section*{等価ゲート集}
+\newpage\section{Equivalent circuit}
 \subsection{Toffoli}
 \begin{minipage}{30pt}
 \Qcircuit{
@@ -257,7 +271,7 @@ p16で導入した記号$\oplus$(exclusive or)を用いると
 &\gate{R_{\pi/2}} &\qw     &\gate{R^\dagger_{\pi/2}} &\qw      &\gate{R_{\pi/2}}&\qw
 }
 \end{minipage}
-\newpage\section*{公式集}\label{formula}
+\newpage\section{Fomula}\label{formula}
 \subsection{$(I\otimes\Lambda(A))(\Lambda(B)\otimes I)$}
 \noindent\ignorespaces
 \al{&\ket{0}\bra{0}\otimes\ket{0}\bra{0}\otimes I+\ket{1}\bra{1}\otimes\ket{0}\bra{0}B\otimes I\\

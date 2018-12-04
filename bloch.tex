@@ -1,8 +1,8 @@
 \tikzstyle{st}=[lightgray, fill, fill opacity=0.1] 
 \begin{tikzpicture}
   \coordinate(o)at(0,0);
-  \draw [fill] (o) circle (1.5pt);
   \draw (o) circle (2cm);
+  \draw [fill] (o) circle (1.5pt);%origin
   \draw [st] (o) -- (56.7:0.4) arc (56.7:90.:0.4) -- cycle;%theta angle
   \draw (0.18,0.6) node {$\theta$};
   \draw [st] (o) -- (-135.7:0.4) arc (-135.7:-33.2:0.4) -- cycle;%varphi angle

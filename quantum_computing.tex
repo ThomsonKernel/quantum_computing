@@ -39,10 +39,21 @@ $\alpha=a\ex^{i\kappa},\ \beta=b\ex^{i\mu}\quad(a\geq0, b\geq0)$とすると、$
 $a=\cos\frac{\theta}{2},\ b=\sin\frac{\theta}{2}\quad(0\leq\theta\leq\pi)$と書ける。
 \[\ket{\psi}=\ex^{i\kappa}\cos\frac{\theta}{2}\ket{0}+\ex^{i\mu}\sin\frac{\theta}{2}\ket{1}\]
 ここでフェーズだけが違う状態ベクトルは同一状態と見做すことを用いれば、$\ex^{-i\kappa}$を全体に掛けることができて、
-$\ex^{i(\mu-\kappa)}$を$\ex^{i\varphi}$とおけば、$\ket{\psi}$として以下のようなものを考えても一般性を失わない。
+$\ex^{i(\mu-\kappa)}$を$\ex^{i\varphi}$とおけば、以下のようなものを考えても一般性を失わない。
 \[\ket{\psi}=\cos\frac{\theta}{2}\ket{0}+\ex^{i\varphi}\sin\frac{\theta}{2}\ket{1}\quad 
 (0\leq\theta\leq\pi,\ 0\leq\varphi\leq2\pi)\]
-
+以上より、$\ket{\psi}$と図に示したBloch球面上の点
+\[(\cos\varphi\sin\frac{\theta}{2} ,\sin\varphi\sin\frac{\theta}{2}, \cos\frac{\theta}{2})\]
+が対応する。\par
+\underline{\bf 例}\par\noindent
+$\ket{+}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$を考えよう。
+\[\begin{cases}
+  \cos\frac{\theta}{2}&=\frac{1}{\sqrt{2}}\\
+  \ex^{i\varphi}\sin\frac{\theta}{2}&=\frac{1}{\sqrt{2}}
+  \end{cases}
+\]
+であるから、$\theta=\frac{\pi}{2}, \varphi=0$を得る。
+したがって$\ket{+}$は$x$軸正の方向に位置することが分かる。
 \section{Questions}
 \s{p6,古典計算機の場合はベクトルのL1ノルムが保存される---}
 \begin{itemize}
